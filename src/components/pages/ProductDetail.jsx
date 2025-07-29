@@ -205,7 +205,7 @@ const priceChange = getPriceChange();
 
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Product Image with Enhanced 1:1 Frame Display */}
-        <div className="space-y-4">
+<div className="space-y-4">
           <div className="relative">
             <div
               className="mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative shadow-lg"
@@ -213,75 +213,73 @@ const priceChange = getPriceChange();
                 width: `${calculateImageDimensions().width}px`,
                 height: `${calculateImageDimensions().height}px`,
                 aspectRatio: calculateImageDimensions().aspectRatio
-}}
+              }}
             >
               {/* Enhanced Progressive Image Loading with Comprehensive Error Handling */}
-              <>
-                <EnhancedImageLoader 
-                  product={product}
-                  dimensions={calculateImageDimensions()}
-                  className="w-full h-full object-cover transition-all duration-500 hover:scale-105 image-loaded"
-                  style={{ 
-                    backgroundColor: '#f3f4f6',
-                    aspectRatio: '1 / 1'
-                  }}
-                />
-                {/* Frame Compatibility Indicator */}
-                {/* Product image without watermark label */}
-              </>
+              <EnhancedImageLoader 
+                product={product}
+                dimensions={calculateImageDimensions()}
+                className="w-full h-full object-cover transition-all duration-500 hover:scale-105 image-loaded"
+                style={{ 
+                  backgroundColor: '#f3f4f6',
+                  aspectRatio: '1 / 1'
+                }}
+              />
+              {/* Frame Compatibility Indicator */}
+              {/* Product image without watermark label */}
+
+              {/* Stock and Deal Badges */}
+              {product.stock <= 10 && product.stock > 0 && (
+                <Badge 
+                  variant="warning" 
+                  className="absolute top-4 left-4"
+                >
+                  Low Stock
+                </Badge>
+              )}
+              
+              {product.stock === 0 && (
+                <Badge 
+                  variant="danger" 
+                  className="absolute top-4 left-4"
+                >
+                  Out of Stock
+                </Badge>
+              )}
+              
+              {priceChange && (
+                <Badge 
+                  variant={priceChange > 0 ? 'danger' : 'sale'} 
+                  className="absolute top-4 right-4 text-sm font-bold shadow-lg"
+                >
+                  {priceChange > 0 ? 'PRICE UP' : 'SALE'} {Math.abs(priceChange).toFixed(1)}% OFF
+                </Badge>
+              )}
+              
+              {/* Auto-Generated Offer Badge */}
+              {product.discountValue && product.discountValue > 0 && (
+                <Badge 
+                  variant="promotional" 
+                  className="absolute top-4 left-4 text-sm font-bold"
+                >
+                  {product.discountType === 'Percentage' 
+                    ? `${product.discountValue}% OFF` 
+                    : `${formatCurrency(product.discountValue)} OFF`
+                  }
+                </Badge>
+              )}
+               
+              {/* Special Deal Badge */}
+              {activeDeal && (
+                <Badge 
+                  variant={activeDeal.color} 
+                  className="absolute bottom-4 left-4 text-sm font-bold animate-pulse shadow-lg"
+                >
+                  <ApperIcon name={activeDeal.icon} size={14} className="mr-1" />
+                  {activeDeal.title}
+                </Badge>
+              )}
             </div>
-          </div>
-{/* Stock and Deal Badges */}
-            {product.stock <= 10 && product.stock > 0 && (
-              <Badge 
-                variant="warning" 
-                className="absolute top-4 left-4"
-              >
-                Low Stock
-              </Badge>
-            )}
-            
-            {product.stock === 0 && (
-              <Badge 
-                variant="danger" 
-                className="absolute top-4 left-4"
-              >
-                Out of Stock
-              </Badge>
-            )}
-            
-            {priceChange && (
-              <Badge 
-                variant={priceChange > 0 ? 'danger' : 'sale'} 
-                className="absolute top-4 right-4 text-sm font-bold shadow-lg"
-              >
-                {priceChange > 0 ? 'PRICE UP' : 'SALE'} {Math.abs(priceChange).toFixed(1)}% OFF
-              </Badge>
-            )}
-            
-            {/* Auto-Generated Offer Badge */}
-            {product.discountValue && product.discountValue > 0 && (
-              <Badge 
-                variant="promotional" 
-                className="absolute top-4 left-4 text-sm font-bold"
-              >
-                {product.discountType === 'Percentage' 
-                  ? `${product.discountValue}% OFF` 
-                  : `${formatCurrency(product.discountValue)} OFF`
-                }
-              </Badge>
-            )}
-             
-            {/* Special Deal Badge */}
-            {activeDeal && (
-              <Badge 
-                variant={activeDeal.color} 
-                className="absolute bottom-4 left-4 text-sm font-bold animate-pulse shadow-lg"
-              >
-                <ApperIcon name={activeDeal.icon} size={14} className="mr-1" />
-                {activeDeal.title}
-              </Badge>
-            )}
           </div>
         </div>
 
