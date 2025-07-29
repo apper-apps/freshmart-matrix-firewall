@@ -34,6 +34,7 @@ import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } fr
 import { persistor, store } from "@/store/index";
 // Core components that need immediate availability (not lazy loaded)
 // Core components that need immediate availability (not lazy loaded)
+// Core components that need immediate availability (not lazy loaded)
 // Core page components that need immediate availability
 // Core components that need to be available immediately
 // Error boundary for lazy-loaded components
