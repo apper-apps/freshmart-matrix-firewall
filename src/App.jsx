@@ -32,6 +32,7 @@ import PayrollManagement from "@/components/pages/PayrollManagement";
 import AdminDashboard from "@/components/pages/AdminDashboard";
 import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
 import { persistor, store } from "@/store/index";
+// Core page components that need immediate availability
 // Core components that need to be available immediately
 // Error boundary for lazy-loaded components
 class LazyErrorBoundary extends React.Component {
