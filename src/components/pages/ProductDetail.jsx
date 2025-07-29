@@ -11,10 +11,10 @@ import ReviewList from "@/components/molecules/ReviewList";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Cart from "@/components/pages/Cart";
-import Badge from "@/components/atoms/Badge";
-import Button from "@/components/atoms/Button";
+import { Badge } from "@/components/atoms/Badge";
+import { Button } from "@/components/atoms/Button";
 import { addToCart } from "@/store/cartSlice";
-import formatCurrency from "@/utils/currency";
+import { formatCurrency } from "@/utils/currency";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -213,19 +213,19 @@ const priceChange = getPriceChange();
                 width: `${calculateImageDimensions().width}px`,
                 height: `${calculateImageDimensions().height}px`,
                 aspectRatio: calculateImageDimensions().aspectRatio
-              }}
+}}
             >
-{/* Enhanced Progressive Image Loading with Comprehensive Error Handling */}
-              <EnhancedImageLoader 
-                product={product}
-                dimensions={calculateImageDimensions()}
-                className="w-full h-full object-cover transition-all duration-500 hover:scale-105 image-loaded"
-                style={{ 
-                  backgroundColor: '#f3f4f6',
-                  aspectRatio: '1 / 1'
-                }}
-/>
+              {/* Enhanced Progressive Image Loading with Comprehensive Error Handling */}
               <>
+                <EnhancedImageLoader 
+                  product={product}
+                  dimensions={calculateImageDimensions()}
+                  className="w-full h-full object-cover transition-all duration-500 hover:scale-105 image-loaded"
+                  style={{ 
+                    backgroundColor: '#f3f4f6',
+                    aspectRatio: '1 / 1'
+                  }}
+                />
                 {/* Frame Compatibility Indicator */}
                 {/* Product image without watermark label */}
               </>
