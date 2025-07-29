@@ -32,6 +32,9 @@ import PayrollManagement from "@/components/pages/PayrollManagement";
 import AdminDashboard from "@/components/pages/AdminDashboard";
 import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
 import { persistor, store } from "@/store/index";
+// Core components that need immediate availability (direct imports)
+
+// All other components are lazy loaded below to prevent identifier conflicts
 // Core components that need immediate availability (not lazy loaded)
 // Essential components that need immediate availability (direct imports)
 // Core components that need immediate availability (not lazy loaded)
