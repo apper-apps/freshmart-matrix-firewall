@@ -33,6 +33,7 @@ import AdminDashboard from "@/components/pages/AdminDashboard";
 import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
 import { persistor, store } from "@/store/index";
 // Core components that need immediate availability (not lazy loaded)
+// Core components that need immediate availability (not lazy loaded)
 // Core page components that need immediate availability
 // Core components that need to be available immediately
 // Error boundary for lazy-loaded components
