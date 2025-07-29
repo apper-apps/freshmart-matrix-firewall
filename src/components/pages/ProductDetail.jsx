@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { Heart, Minus, Plus, ShoppingCart, Star } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "react-hot-toast";
-import ReviewForm from "@/components/molecules/ReviewForm";
-import ReviewList from "@/components/molecules/ReviewList";
 import { productService } from "@/services/api/productService";
 import ApperIcon from "@/components/ApperIcon";
+import ReviewForm from "@/components/molecules/ReviewForm";
+import ReviewList from "@/components/molecules/ReviewList";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Cart from "@/components/pages/Cart";
@@ -28,7 +28,6 @@ const ProductDetail = () => {
   useEffect(() => {
     loadProduct();
   }, [productId]);
-
 const loadProduct = async () => {
     try {
       setLoading(true);
@@ -75,7 +74,6 @@ const loadProduct = async () => {
     handleAddToCart();
     navigate('/cart');
   };
-
 const getPriceChange = () => {
     if (product?.previousPrice && product.previousPrice !== product.price) {
       const change = ((product.price - product.previousPrice) / product.previousPrice) * 100;
@@ -159,7 +157,6 @@ if (error) {
       </div>
     );
   }
-
 const priceChange = getPriceChange();
   const activeDeal = getActiveDeal();
 
@@ -227,12 +224,14 @@ const priceChange = getPriceChange();
                   backgroundColor: '#f3f4f6',
                   aspectRatio: '1 / 1'
                 }}
-              />
-              {/* Frame Compatibility Indicator */}
-{/* Product image without watermark label */}
-              </div>
+/>
+              <>
+                {/* Frame Compatibility Indicator */}
+                {/* Product image without watermark label */}
+              </>
             </div>
-            {product.stock <= 10 && product.stock > 0 && (
+          </div>
+{product.stock <= 10 && product.stock > 0 && (
               <Badge 
                 variant="warning" 
                 className="absolute top-4 left-4"

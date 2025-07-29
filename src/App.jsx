@@ -1,10 +1,10 @@
 import 'react-toastify/dist/ReactToastify.css'
+import "@/index.css";
 import React, { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Provider, useDispatch } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import "@/index.css";
 import webSocketService from "@/services/api/websocketService";
 import Layout from "@/components/organisms/Layout";
 import Loading from "@/components/ui/Loading";
