@@ -33,6 +33,7 @@ import AdminDashboard from "@/components/pages/AdminDashboard";
 import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
 import { persistor, store } from "@/store/index";
 // Core components that need immediate availability (direct imports)
+// Core components that need immediate availability (direct imports)
 
 // Error boundary for lazy-loaded components
 class LazyErrorBoundary extends React.Component {
