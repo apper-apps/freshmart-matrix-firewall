@@ -32,6 +32,7 @@ import PayrollManagement from "@/components/pages/PayrollManagement";
 import AdminDashboard from "@/components/pages/AdminDashboard";
 import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
 import { persistor, store } from "@/store/index";
+// Only import components that are NOT lazy-loaded
 // Essential components that need immediate availability (not lazy loaded)
 // Core components that need immediate availability (not lazy loaded)
 // Core components that need immediate availability (not lazy loaded)
@@ -249,7 +250,7 @@ const OrderSummary = createLazyComponent(() => import('@/components/pages/OrderS
 const OrderTracking = createLazyComponent(() => import('@/components/pages/OrderTracking'), 'Order Tracking');
 const Account = createLazyComponent(() => import('@/components/pages/Account'), 'Account');
 const VendorPortal = createLazyComponent(() => import('@/components/pages/VendorPortal'), 'Vendor Portal');
-const RoleAssignment = createLazyComponent(() => import('@/components/pages/RoleAssignment'), 'Role Assignment');
+const RoleAssignment = createLazyComponent(() => import('@/components/pages/RoleAssignment').then(module => ({ default: module.RoleAssignment })), 'Role Assignment');
 // WebSocket Integration Component
 const WebSocketProvider = ({ children }) => {
   const dispatch = useDispatch();
