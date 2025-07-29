@@ -11,10 +11,10 @@ import ReviewList from "@/components/molecules/ReviewList";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Cart from "@/components/pages/Cart";
-import { Badge } from "@/components/atoms/Badge";
-import { Button } from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
 import { addToCart } from "@/store/cartSlice";
-import { formatCurrency } from "@/utils/currency";
+import formatCurrency from "@/utils/currency";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -231,7 +231,8 @@ const priceChange = getPriceChange();
               </>
             </div>
           </div>
-{product.stock <= 10 && product.stock > 0 && (
+{/* Stock and Deal Badges */}
+            {product.stock <= 10 && product.stock > 0 && (
               <Badge 
                 variant="warning" 
                 className="absolute top-4 left-4"
@@ -249,7 +250,7 @@ const priceChange = getPriceChange();
               </Badge>
             )}
             
-{priceChange && (
+            {priceChange && (
               <Badge 
                 variant={priceChange > 0 ? 'danger' : 'sale'} 
                 className="absolute top-4 right-4 text-sm font-bold shadow-lg"
@@ -258,7 +259,7 @@ const priceChange = getPriceChange();
               </Badge>
             )}
             
-{/* Auto-Generated Offer Badge */}
+            {/* Auto-Generated Offer Badge */}
             {product.discountValue && product.discountValue > 0 && (
               <Badge 
                 variant="promotional" 
@@ -270,7 +271,7 @@ const priceChange = getPriceChange();
                 }
               </Badge>
             )}
-             {/* Special Deal Badge */}
+             
             {/* Special Deal Badge */}
             {activeDeal && (
               <Badge 
