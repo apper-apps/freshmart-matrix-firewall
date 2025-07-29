@@ -664,9 +664,8 @@ return (
               pauseOnFocusLoss={false}
               draggable
               pauseOnHover={false}
-              theme="colored"
-              style={{ zIndex: 9999 }}
-              limit={3}
+theme="colored"
+style={{ zIndex: 9999 }}
 limit={3}
 />
 </div>
