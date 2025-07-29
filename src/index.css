@@ -485,3 +485,198 @@
     @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
   }
 }
+
+/* Review System Styles */
+.review-card {
+  @apply bg-white rounded-lg shadow-card hover:shadow-premium transition-all duration-300;
+}
+
+.review-rating-stars {
+  @apply flex items-center space-x-1;
+}
+
+.review-form {
+  @apply bg-white rounded-lg p-6 shadow-card;
+}
+
+.review-form-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors duration-200;
+}
+
+/* Review Moderation Styles */
+.moderation-panel {
+  @apply bg-white rounded-lg shadow-card;
+}
+
+.moderation-filter {
+  @apply px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent;
+}
+
+.spam-score-bar {
+  @apply w-full bg-gray-200 rounded-full h-2 transition-all duration-300;
+}
+
+.spam-score-fill {
+  @apply h-2 rounded-full transition-all duration-300;
+}
+
+.spam-score-high {
+  @apply bg-red-500;
+}
+
+.spam-score-medium {
+  @apply bg-yellow-500;
+}
+
+.spam-score-low {
+  @apply bg-green-500;
+}
+
+/* Review Status Badges */
+.review-status-approved {
+  @apply bg-green-100 text-green-800 border border-green-200;
+}
+
+.review-status-pending {
+  @apply bg-yellow-100 text-yellow-800 border border-yellow-200;
+  animation: review-pulse 2s infinite;
+}
+
+.review-status-rejected {
+  @apply bg-red-100 text-red-800 border border-red-200;
+}
+
+@keyframes review-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Review Rating Distribution */
+.rating-distribution-bar {
+  @apply flex-1 bg-gray-200 rounded-full h-2;
+}
+
+.rating-distribution-fill {
+  @apply bg-yellow-400 h-2 rounded-full transition-all duration-300;
+}
+
+/* Review Helpfulness Buttons */
+.helpfulness-button {
+  @apply flex items-center space-x-1 text-gray-600 hover:scale-105 transition-all duration-200;
+}
+
+.helpfulness-button:hover {
+  @apply transform scale-105;
+}
+
+.helpfulness-button.helpful:hover {
+  @apply text-green-600;
+}
+
+.helpfulness-button.not-helpful:hover {
+  @apply text-red-600;
+}
+
+/* Review Form Validation */
+.review-form-error {
+  @apply border-red-300 focus:border-red-500 focus:ring-red-500;
+}
+
+.review-form-success {
+  @apply border-green-300 focus:border-green-500 focus:ring-green-500;
+}
+
+/* Mobile Review Optimizations */
+@media (max-width: 640px) {
+  .review-card {
+    @apply p-4;
+  }
+  
+  .review-form {
+    @apply p-4;
+  }
+  
+  .moderation-panel {
+    @apply p-4;
+  }
+  
+  .review-rating-stars {
+    @apply space-x-0.5;
+  }
+  
+  .helpfulness-button {
+    @apply min-h-[44px] min-w-[44px] touch-manipulation;
+  }
+}
+
+/* Review Loading States */
+.review-skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.review-loading-card {
+  @apply bg-white rounded-lg p-6 shadow-card;
+}
+
+.review-loading-avatar {
+  @apply w-10 h-10 bg-gray-200 rounded-full;
+}
+
+.review-loading-text {
+  @apply h-4 bg-gray-200 rounded;
+}
+
+.review-loading-title {
+  @apply h-5 bg-gray-200 rounded w-3/4 mb-2;
+}
+
+.review-loading-content {
+  @apply h-4 bg-gray-200 rounded w-full mb-1;
+}
+
+/* Review Animations */
+.review-slide-in {
+  animation: reviewSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes reviewSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-fade-out {
+  animation: reviewFadeOut 0.3s ease-in forwards;
+}
+
+@keyframes reviewFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Product Image Override - Remove 1:1 Frame Label */
+.product-image::after {
+  content: none !important;
+}
+
+.product-image-container::after {
+  content: none !important;
+}
+
+/* Remove any watermark overlays */
+.product-image-overlay,
+.image-watermark,
+.frame-label {
+  display: none !important;
+}

@@ -20,7 +20,7 @@ import Badge from "@/components/atoms/Badge";
 import Button from "@/components/atoms/Button";
 import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
-
+import ReviewModeration from "@/components/molecules/ReviewModeration";
 const AdminDashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -1518,6 +1518,31 @@ action.isAction ? (
             </div>
           )}
 </div>
+</div>
+
+      {/* Review Management Section */}
+      <div className="mt-8">
+        <div className="bg-white rounded-lg shadow-card">
+          <div className="p-6 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <ApperIcon name="MessageSquare" size={24} className="text-primary" />
+                <h2 className="text-xl font-semibold">Review Management</h2>
+              </div>
+              <Link
+                to="/admin/reviews"
+                className="text-primary hover:text-accent font-medium text-sm flex items-center space-x-1"
+              >
+                <span>View All Reviews</span>
+                <ApperIcon name="ArrowRight" size={16} />
+              </Link>
+            </div>
+          </div>
+          
+          <div className="p-6">
+            <ReviewModeration />
+          </div>
+        </div>
       </div>
 
 {/* Enhanced Approval Workflow Section */}

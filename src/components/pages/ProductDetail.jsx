@@ -4,15 +4,18 @@ import { useDispatch } from "react-redux";
 import { Heart, Minus, Plus, ShoppingCart, Star } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "react-hot-toast";
-import { addToCart } from "@/store/cartSlice";
-import { formatCurrency } from "@/utils/currency";
+import ReviewForm from "@/components/molecules/ReviewForm";
+import ReviewList from "@/components/molecules/ReviewList";
 import { productService } from "@/services/api/productService";
 import ApperIcon from "@/components/ApperIcon";
-import Cart from "@/components/pages/Cart";
-import { Badge } from "@/components/atoms/Badge";
-import { Button } from "@/components/atoms/Button";
-import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import Cart from "@/components/pages/Cart";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import { addToCart } from "@/store/cartSlice";
+import formatCurrency from "@/utils/currency";
+
 const ProductDetail = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -226,11 +229,7 @@ const priceChange = getPriceChange();
                 }}
               />
               {/* Frame Compatibility Indicator */}
-              <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-md">
-                <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
-                  <span className="text-xs font-medium text-gray-700">1:1 Frame</span>
-                </div>
+{/* Product image without watermark label */}
               </div>
             </div>
             {product.stock <= 10 && product.stock > 0 && (
@@ -487,6 +486,21 @@ const priceChange = getPriceChange();
                 Out of Stock
               </Button>
             )}
+</div>
+
+          {/* Customer Reviews Section */}
+          <div className="pt-8 border-t border-gray-200">
+            <div className="mb-8">
+              <ReviewList productId={parseInt(productId)} limit={3} />
+            </div>
+            
+            <div className="mb-8">
+              <ReviewForm 
+                productId={parseInt(productId)} 
+                customerId={1} // TODO: Get from auth context
+                onReviewSubmitted={() => window.location.reload()} 
+              />
+            </div>
           </div>
 
           {/* Features */}

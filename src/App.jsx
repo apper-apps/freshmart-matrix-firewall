@@ -4,15 +4,34 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Provider, useDispatch } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { persistor, store } from "@/store/index";
-import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
+import "@/index.css";
+import webSocketService from "@/services/api/websocketService";
 import Layout from "@/components/organisms/Layout";
 import Loading from "@/components/ui/Loading";
-import Cart from "@/components/pages/Cart";
+import Error from "@/components/ui/Error";
+import OrderTracking from "@/components/pages/OrderTracking";
+import VendorManagement from "@/components/pages/VendorManagement";
+import DeliveryTracking from "@/components/pages/DeliveryTracking";
+import Orders from "@/components/pages/Orders";
+import Account from "@/components/pages/Account";
+import OrderSummary from "@/components/pages/OrderSummary";
 import Checkout from "@/components/pages/Checkout";
+import Analytics from "@/components/pages/Analytics";
 import Home from "@/components/pages/Home";
+import POS from "@/components/pages/POS";
 import ProductDetail from "@/components/pages/ProductDetail";
-import webSocketService from "@/services/api/websocketService";
+import PaymentManagement from "@/components/pages/PaymentManagement";
+import Category from "@/components/pages/Category";
+import VendorPortal from "@/components/pages/VendorPortal";
+import ProductManagement from "@/components/pages/ProductManagement";
+import FinancialDashboard from "@/components/pages/FinancialDashboard";
+import AIGenerate from "@/components/pages/AIGenerate";
+import Cart from "@/components/pages/Cart";
+import { RoleAssignment } from "@/components/pages/RoleAssignment";
+import PayrollManagement from "@/components/pages/PayrollManagement";
+import AdminDashboard from "@/components/pages/AdminDashboard";
+import { addRealTimeNotification, setConnectionStatus, updateApprovalStatus } from "@/store/approvalWorkflowSlice";
+import { persistor, store } from "@/store/index";
 // Error boundary for lazy-loaded components
 class LazyErrorBoundary extends React.Component {
   constructor(props) {
@@ -475,12 +494,13 @@ const handleMessageError = (event) => {
     }, 2000);
 
     return () => clearTimeout(preloadTimer);
-  }, []);
+}, []);
+
 return (
-    <Provider store={store}>
-      <PersistGate loading={<Loading type="page" />} persistor={persistor}>
-        <WebSocketProvider>
-        <BrowserRouter>
+<Provider store={store}>
+<PersistGate loading={<Loading type="page" />} persistor={persistor}>
+<WebSocketProvider>
+<BrowserRouter>
 <div className="min-h-screen bg-background">
               {/* Mobile viewport optimization */}
               <div className="hidden">
@@ -647,13 +667,13 @@ return (
               theme="colored"
               style={{ zIndex: 9999 }}
               limit={3}
-            />
+limit={3}
+/>
 </div>
-        </BrowserRouter>
-        </WebSocketProvider>
-      </PersistGate>
-    </Provider>
-  );
-}
+</BrowserRouter>
+</WebSocketProvider>
+</PersistGate>
+</Provider>
+);
 
 export default App;
